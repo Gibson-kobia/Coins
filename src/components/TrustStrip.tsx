@@ -1,38 +1,50 @@
 "use client";
 import { motion } from "framer-motion";
-import { Shield, Lock, Globe, Zap, CheckCircle2, Server } from "lucide-react";
+import { CheckCircle2, Shield, Timer, Workflow } from "lucide-react";
 
-const signals = [
-  { icon: Shield, label: "SOC 2 Compliant", desc: "Built on compliant infrastructure" },
-  { icon: Lock, label: "AES-256 Encryption", desc: "End-to-end data protection" },
-  { icon: Globe, label: "Multi-Region", desc: "Geo-distributed reliability" },
-  { icon: Zap, label: "99.9% Uptime", desc: "High-availability design" },
-  { icon: CheckCircle2, label: "API-First", desc: "Flexible integration model" },
-  { icon: Server, label: "Audit Logs", desc: "Full activity traceability" },
+const trustItems = [
+  {
+    icon: Shield,
+    title: "Secure onboarding",
+    description: "Data is encrypted in transit and at rest.",
+  },
+  {
+    icon: Workflow,
+    title: "Shared integration intake",
+    description: "One form supports all current platforms.",
+  },
+  {
+    icon: Timer,
+    title: "Fast team follow-up",
+    description: "Most requests get a response within 1 business day.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Multi-platform readiness",
+    description: "Add new connections without rebuilding onboarding.",
+  },
 ];
 
 export default function TrustStrip() {
   return (
-    <section className="relative py-10 border-y border-white/5">
+    <section id="flow" className="relative border-y border-white/5 py-10 sm:py-12">
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-900/5 to-transparent" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-          {signals.map((item, i) => (
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 sm:gap-4">
+          {trustItems.map((item, i) => (
             <motion.div
-              key={item.label}
+              key={item.title}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="flex flex-col items-center text-center gap-2"
+              className="rounded-xl border border-white/10 bg-white/[0.03] p-4"
             >
-              <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/15 flex items-center justify-center">
-                <item.icon className="w-4 h-4 text-blue-400" />
+              <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg border border-blue-500/15 bg-blue-500/10">
+                <item.icon className="h-4 w-4 text-blue-300" />
               </div>
-              <div>
-                <p className="text-xs font-semibold text-white">{item.label}</p>
-                <p className="text-[10px] text-slate-500">{item.desc}</p>
-              </div>
+              <p className="text-sm font-semibold text-white">{item.title}</p>
+              <p className="mt-1 text-xs leading-relaxed text-slate-400">{item.description}</p>
             </motion.div>
           ))}
         </div>

@@ -1,16 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Products", href: "/products" },
-  { label: "Solutions", href: "/solutions" },
-  { label: "Developers", href: "/developers" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Security", href: "/security" },
-  { label: "Company", href: "/company" },
+  { label: "Platforms", href: "#platforms" },
+  { label: "How It Works", href: "#flow" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export default function Navbar() {
@@ -29,66 +26,58 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#050510]/90 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/20"
+            ? "border-b border-white/5 bg-[#050510]/90 shadow-lg shadow-black/20 backdrop-blur-xl"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
-                <Zap className="w-4 h-4 text-white" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <Link href="/" className="group flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/25">
+                <Zap className="h-4 w-4 text-white" />
               </div>
-              <span className="text-lg font-semibold tracking-tight text-white group-hover:text-blue-400 transition-colors">
+              <span className="text-lg font-semibold tracking-tight text-white transition-colors group-hover:text-blue-300">
                 Nexara
               </span>
             </Link>
 
-            {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden items-center gap-1 lg:flex">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="px-3 py-2 text-sm text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                  className="rounded-lg px-3 py-2 text-sm text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
 
-            {/* CTA buttons */}
-            <div className="hidden lg:flex items-center gap-3">
-              <Link
-                href="/signin"
-                className="px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors"
-              >
+            <div className="hidden items-center gap-3 lg:flex">
+              <Link href="/signin" className="px-4 py-2 text-sm text-slate-300 transition-colors hover:text-white">
                 Sign In
               </Link>
               <Link
-                href="/get-started"
-                className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg hover:from-blue-500 hover:to-indigo-500 transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
+                href="/connect"
+                className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-blue-500/20 transition-all hover:from-blue-500 hover:to-indigo-500 hover:shadow-blue-500/30"
               >
-                Get Started
+                Connect Account
               </Link>
             </div>
 
-            {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-slate-300 hover:text-white transition-colors"
+              className="p-2 text-slate-300 transition-colors hover:text-white lg:hidden"
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
       </motion.header>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -96,33 +85,33 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-40 bg-[#080818]/95 backdrop-blur-xl border-b border-white/5 lg:hidden"
+            className="fixed inset-x-0 top-16 z-40 border-b border-white/5 bg-[#080818]/95 backdrop-blur-xl lg:hidden"
           >
-            <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
+            <div className="mx-auto max-w-7xl space-y-1 px-4 py-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  className="block rounded-lg px-4 py-3 text-sm text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="pt-3 flex flex-col gap-2 border-t border-white/5 mt-3">
+              <div className="mt-3 flex flex-col gap-2 border-t border-white/5 pt-3">
                 <Link
                   href="/signin"
                   onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  className="rounded-lg px-4 py-3 text-sm text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
                 >
                   Sign In
                 </Link>
                 <Link
-                  href="/get-started"
+                  href="/connect"
                   onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-sm font-medium text-center text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg"
+                  className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-center text-sm font-medium text-white"
                 >
-                  Get Started
+                  Connect Account
                 </Link>
               </div>
             </div>
