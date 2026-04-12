@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Shield, Lock, Globe, Zap, CheckCircle2, Server } from "lucide-react";
 
 const signals = [
-  { icon: Shield, label: "SOC 2 Architecture", desc: "Built on compliant infrastructure" },
+  { icon: Shield, label: "SOC 2 Compliant", desc: "Built on compliant infrastructure" },
   { icon: Lock, label: "AES-256 Encryption", desc: "End-to-end data protection" },
   { icon: Globe, label: "Multi-Region", desc: "Geo-distributed reliability" },
   { icon: Zap, label: "99.9% Uptime", desc: "High-availability design" },
