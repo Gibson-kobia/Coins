@@ -2,45 +2,56 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Shield, Timer, Workflow } from "lucide-react";
 
-const trustItems = [
+const benefitItems = [
   {
     icon: Shield,
     title: "Secure onboarding",
-    description: "Data is encrypted in transit and at rest.",
+    description: "Encrypted intake handling from first submission to review.",
   },
   {
     icon: Workflow,
-    title: "Shared integration intake",
-    description: "One form supports all current platforms.",
+    title: "Reusable intake",
+    description: "One data structure across platforms removes duplicate onboarding steps.",
   },
   {
     icon: Timer,
-    title: "Fast team follow-up",
-    description: "Most requests get a response within 1 business day.",
+    title: "Faster launch path",
+    description: "Your selected platform request is queued immediately for team follow-up.",
   },
   {
     icon: CheckCircle2,
-    title: "Multi-platform readiness",
-    description: "Add new connections without rebuilding onboarding.",
+    title: "Built to scale",
+    description: "Add more platform connections later without restarting everything.",
   },
 ];
 
 export default function TrustStrip() {
   return (
-    <section id="flow" className="relative border-y border-white/5 py-10 sm:py-12">
+    <section className="relative border-y border-white/5 py-10 sm:py-12">
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-900/5 to-transparent" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-6 text-center"
+        >
+          <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-blue-400">Why One Shared Intake</p>
+          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Benefits of one reusable onboarding layer.</h2>
+        </motion.div>
+
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 sm:gap-4">
-          {trustItems.map((item, i) => (
+          {benefitItems.map((item, i) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="rounded-xl border border-white/10 bg-white/[0.03] p-4"
+              transition={{ duration: 0.35, delay: i * 0.05 }}
+              className="rounded-xl border border-white/10 bg-[#0A0F1E]/80 p-4"
             >
-              <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg border border-blue-500/15 bg-blue-500/10">
+              <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg border border-blue-500/20 bg-blue-500/10">
                 <item.icon className="h-4 w-4 text-blue-300" />
               </div>
               <p className="text-sm font-semibold text-white">{item.title}</p>

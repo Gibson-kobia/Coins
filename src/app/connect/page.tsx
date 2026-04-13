@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle2, Loader2 } from "lucide-react";
-import { activePlatforms, getPlatformBySlug } from "@/lib/platforms";
+import { getPlatformBySlug, platforms } from "@/lib/platforms";
 
 type FormData = {
   platform: string;
@@ -25,7 +25,7 @@ type FormData = {
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const initialData: FormData = {
-  platform: activePlatforms[0]?.slug ?? "",
+  platform: platforms[0]?.slug ?? "",
   companyName: "",
   fullName: "",
   workEmail: "",
@@ -74,7 +74,7 @@ function ConnectPageContent() {
 
   const preselected = useMemo(() => {
     const match = getPlatformBySlug(requestedPlatform);
-    return match && match.status !== "coming-soon" ? match.slug : initialData.platform;
+    return match ? match.slug : initialData.platform;
   }, [requestedPlatform]);
 
   const [formData, setFormData] = useState<FormData>(() => ({ ...initialData, platform: preselected }));
@@ -154,9 +154,9 @@ function ConnectPageContent() {
               onChange={(e) => onChange("platform", e.target.value)}
               className="w-full rounded-xl border border-white/10 bg-[#0b1022] px-3 py-2.5 text-sm text-slate-100 outline-none transition focus:border-blue-400/60"
             >
-              {activePlatforms.map((platform) => (
+              {platforms.map((platform) => (
                 <option key={platform.id} value={platform.slug}>
-                  {platform.name} ({platform.status === "beta" ? "Beta" : "Available"})
+                  {platform.name} ({platform.status === "coming-soon" ? "Coming Soon" : platform.status === "beta" ? "Beta" : "Available"})
                 </option>
               ))}
             </select>

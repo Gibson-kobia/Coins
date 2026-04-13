@@ -8,6 +8,7 @@ export type Platform = {
   shortDescription: string;
   status: PlatformStatus;
   ctaLabel: string;
+  accent: string;
 };
 
 export const platforms: Platform[] = [
@@ -16,58 +17,62 @@ export const platforms: Platform[] = [
     name: "Coinbase",
     slug: "coinbase",
     logo: "/logos/coinbase.svg",
-    shortDescription: "Sync exchange balances and activity through one shared intake form.",
+    shortDescription: "Connect exchange balances, spot activity, and account ownership data.",
     status: "available",
     ctaLabel: "Connect Coinbase",
+    accent: "#3B82F6",
   },
   {
     id: "binance",
     name: "Binance",
     slug: "binance",
     logo: "/logos/binance.svg",
-    shortDescription: "Link Binance accounts and route onboarding to the same Nexara flow.",
+    shortDescription: "Sync Binance trading accounts, positions, and transfer history in one intake.",
     status: "available",
     ctaLabel: "Connect Binance",
+    accent: "#EAB308",
   },
   {
     id: "bybit",
     name: "Bybit",
     slug: "bybit",
     logo: "/logos/bybit.svg",
-    shortDescription: "Bring Bybit spot and derivatives onboarding into one reusable process.",
+    shortDescription: "Route Bybit onboarding for spot and derivatives through the shared Nexara flow.",
     status: "beta",
     ctaLabel: "Join Bybit Beta",
+    accent: "#F59E0B",
   },
   {
     id: "noones",
     name: "Noones",
     slug: "noones",
     logo: "/logos/noones.svg",
-    shortDescription: "Submit one intake and we map it to your Noones connection path.",
+    shortDescription: "Connect Noones account profile and transaction context using the same form.",
     status: "beta",
-    ctaLabel: "Join Noones Beta",
+    ctaLabel: "Connect Noones",
+    accent: "#A78BFA",
   },
   {
     id: "external-wallets",
     name: "External Wallets",
     slug: "external-wallets",
     logo: "/logos/external-wallets.svg",
-    shortDescription: "Connect non-custodial and hardware wallets without separate forms.",
+    shortDescription: "Link external and hardware wallets for shared onboarding and review.",
     status: "available",
     ctaLabel: "Connect Wallets",
+    accent: "#22D3EE",
   },
   {
     id: "bank-payment-rails",
     name: "Bank & Payment Rails",
     slug: "bank-payment-rails",
     logo: "/logos/bank-payment-rails.svg",
-    shortDescription: "Traditional payment rails onboarding is opening soon.",
+    shortDescription: "Request ACH, SEPA, SWIFT, and local rails onboarding from the same intake flow.",
     status: "coming-soon",
-    ctaLabel: "Coming Soon",
+    ctaLabel: "Request Rails Access",
+    accent: "#34D399",
   },
 ];
-
-export const activePlatforms = platforms.filter((item) => item.status !== "coming-soon");
 
 export function getPlatformBySlug(slug: string) {
   return platforms.find((item) => item.slug === slug);

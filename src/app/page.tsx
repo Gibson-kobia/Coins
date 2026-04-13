@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ConnectedPlatforms from "@/components/ConnectedPlatforms";
+import FlowExplainer from "@/components/FlowExplainer";
 import TrustStrip from "@/components/TrustStrip";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ConnectedPlatforms />
+      <FlowExplainer />
       <TrustStrip />
       <FAQ />
       <FinalCTA />
