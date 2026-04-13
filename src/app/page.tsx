@@ -3,6 +3,9 @@ import Hero from "@/components/Hero";
 import ConnectedPlatforms from "@/components/ConnectedPlatforms";
 import FlowExplainer from "@/components/FlowExplainer";
 import TrustStrip from "@/components/TrustStrip";
+import SecurityCredSection from "@/components/SecurityCredSection";
+import DashboardPreview from "@/components/DashboardPreview";
+import DeveloperHighlight from "@/components/DeveloperHighlight";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -15,6 +18,9 @@ export default function Home() {
       <ConnectedPlatforms />
       <FlowExplainer />
       <TrustStrip />
+      <SecurityCredSection />
+      <DashboardPreview />
+      <DeveloperHighlight />
       <FAQ />
       <FinalCTA />
       <Footer />
